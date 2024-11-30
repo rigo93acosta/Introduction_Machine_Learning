@@ -10,9 +10,15 @@
     - [Pandas](#pandas)
     - [Visualización](#visualización-de-los-datos)
     - [Tipos de modelos de machine learning](#tipos-de-modelos-de-machine-learning)
+    - [Reto](#reto-section-1)
 - [Algoritmos simples de machine learning](#algoritmos-simples-de-machine-learning)
     - [Normalizar tus datos númericos](#normalizar-tus-datos-númericos)
     - [Preparar los datos para modelos](#preparar-los-datos-para-modelos)
+    - [Linear Regression](#linear-regression)
+    - [Logistic Regression](#logistic-regression)
+    - [Random forest classifier](#random-forest-classifier)
+    - [K-means](#algoritmos-no-supervisados)
+    - [Reto](#reto-section-2)
 - [Deep Learning](#deep-learning)
 - [Conclusiones](#conclusiones)
 
@@ -94,7 +100,7 @@ data.dtypes
 ![Supervisado](images/tipos_problemas.png)
 ![No_Supervisado](images/no_supervisado.png)
 
-## Reto
+## Reto Section 1
 
 Dataset: 
 - Pregnancies: Number of times pregnant
@@ -229,7 +235,7 @@ $$\mathcal{J}(c^1, \dots, c^n)=\sum_{j=1}^K\sum_{x \in S_j} |x_i^j-c^j|^2$$
 - Silhouette score: qué tan lejanos son los cluster, de $[-1, 1]$. Este número debe ser cercano a 1.
 - ![Curva de Elbow](images/ELBOW.png)
 
-
+## Reto Section 2
 
 # Deep Learning
 
