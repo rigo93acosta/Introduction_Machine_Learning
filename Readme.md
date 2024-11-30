@@ -20,6 +20,9 @@
     - [K-means](#algoritmos-no-supervisados)
     - [Reto](#reto-section-2)
 - [Deep Learning](#deep-learning)
+    - [Mejorar las predicciones de las redes neuronales](#mejorar-las-predicciones-de-las-redes-neuronales)
+    - [Entrenamiento de Redes Neuronales](#entrenamiento-de-redes-neuronales)
+        - [Ejemplo de entrenamiento de la NN](#ejemplo-de-entrenamiento-de-la-nn)
 - [Conclusiones](#conclusiones)
 
 # Introducción a machine learning
@@ -277,8 +280,90 @@ f.tight_layout()
 
 > También se puede usar la biblioteca: https://www.scikit-yb.org/en/latest/index.html
 
-
-
 # Deep Learning
+
+> Red Neuronal: es un modelo que usa neuronas y conexiones entre ellos para hacer predicciones. **Son usadas usualmente para aprendizaje supervisado.**
+> ![NN](images/NN.png)
+
+**Capa de entrada conecta con múltiples unidades ocultas**
+- Cada unidad oculta recibe una combinación lineal de todas las entradas.
+- Para la misma entrada existen diferentes pesos dependiendo de cuál unidad oculta esté adjunta. Estos pesos pueden ser distintos.
+- **Ejemplo**: $W_{2,3}$ El peso de la segunda entrada a la tercera unidad.
+
+**La unidad oculta ejecuta una función en la combinación lineal $g_1(x)$. Esta es la llamada función de activación. 
+![Activation function](images/Activation_function.png)
+
+**Tipos de función de activación:**
+- Lineal: $f(x)=x$
+- ReLU: $f(x) = x \quad\forall~x \ge 0 ~\text{else} f(x)=0  \quad\forall~x \le 0$
+- Sigmoid: $f(x)=1/(1+\exp(-x))$
+- Tanh: $f(x)=\tanh(x)$
+- Se deben evitar la linealidad para funciones complejas.
+
+**Capa de salida**: Existen diferentes funciones de activación para clasificación o regresión para esta capa. Algunas funciones de activación tienen *rango limitado** (ex: softmax/sigmoide), mientras que otras se **extienden indefinidamente** (ReLUs, lineal).
+
+![Activation_Output](images/activation_output.png)
+
+**Añadiendo capas**: Cuando hablamos de **profundidad** es agregar más capas al model. Mientra que cuando hablamos de **ancho** es agregar más unidades ocultas o neuronas.
+
+## Mejorar las predicciones de las redes neuronales
+
+![Performance](images/Performance_NN.png)
+
+- Con el **Dropout** podemos evitar el sobreajuste, esta técnica *ignora* aleatoriamente algunos nodos (neuronas) mientras entrena. Evita que el modelo retenga toda la información y en vez de aprender a generalizar solo memoriza. Esto siempre se quiere evitar.
+
+- Debemos preveer el overfitting 
+
+![Overfitting](images/check_overfitting.png)
+
+- Observamos en la figura anterior como empleamos los datos de validación para controlar el entrenamiento de la red neuronal y de esta forma evitamos el overfitting, nos detenemos en el número óptimo de épocas.
+
+- Las redes neuronales tienen tres capas generales: Entrada, Ocultas y Salida.
+
+- **Funciones de activación** para capas ocultas y de salida.
+
+- Entrenamiento involucra avanzar en la red, calcular la pérdida y backpropagation.
+
+- El aprendizaje y dropout son importantes para el entrenamiento.
+
+- Evalúa la pérdida y el rendimiento en el set de validación.
+
+## Entrenamiento de Redes Neuronales
+
+1. Escoge tu arquitectura.
+2. La *receta* de entrenamiento.
+3. Ajustar tu tasa de entrenamiento.
+
+![Tipos de NN](images/tipos_nN.png)
+
+- DNN: Usada en muchos problemas complejos. Emplea casi todas las funciones de activación vista.
+- CNN: Usada en imágenes y genómicos. Operador convoluciona/pool y kernels como herramienta matemática para extraer información de los datos.
+- RRN: Representa secuencias, usada en lenguaje. Emplea celdas de memoria/puerta como herramienta matemática para su funcionamiento.
+
+### Ejemplo de entrenamiento de la NN
+
+![Train NN](images/Train_NN.png)
+
+> Backpropagation: método para ajustar los pesos de las neuronas de la red neuronal.
+
+## Etapas del entrenamiento
+
+- Feed forward: avance hacia adelante
+
+![Feed Forward](images/FF.png)
+
+- Como función de pérdida en regresión podemos emplear MSE $$J = \frac{1}{N}\sum_{i=1}^{N}(y_i-y_{i, pred})^2$$
+
+- Como función de pérdida en regresión podemos emplear Binary Cross-Entropy (BCE) $$J = -\frac{1}{N}\sum_{i=0}^{N} y_i\cdot \log(p_\text{Class 1}) + (1-y_{i}) \cdot \log(1-p_\text{Class 1})$$
+
+- Además para el caso de la clasificación de múltiples categorías tenemos Categorical Cross-Entropy (CCE) $$J=\sum_{i=1}^C - t_i \log(p_i)$$, donde $C$ es el número de clases, $t_i$ la etiqueta correcta y $p_i$ es la probabilidad de predección de la clase.
+
+- Backpropagation: s la regla de actualización usada para ajustar los pesos en redes neuronales. Actualizamos cada peso en la red tomando la derivada (parcial) de ello con respecto a cada nodo, empezando desde la salida hasta las entradas.
+
+![Backpropagation](images/backpropagation.png)
+
+- **Analogía de la tasa de aprendizaje**: La optimización se usa para encontrar pesos de acuerdo a las reglas de actualización. 
+    - Si la tasa de aprendizaje (learning rate) es **muy pequeña**, toma mucho tiempo encontrar buenos pesos.
+    - Si es **muy grande**, el modelo podría atorarse en una mala solución.
 
 # Conclusiones
