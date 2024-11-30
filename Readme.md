@@ -237,6 +237,48 @@ $$\mathcal{J}(c^1, \dots, c^n)=\sum_{j=1}^K\sum_{x \in S_j} |x_i^j-c^j|^2$$
 
 ## Reto Section 2
 
+**Dataset**: Inspeccionando los elementos parece que los "datos" contienen la información que necesitamos. Están en la forma de array, típicamente denotado $N \times M$ donde $N$ representa el número de filas (150), y $M$ el número de columnas (4).
+
+La clave `feature_names` indica la información de las características: largo del sépalo, ancho del sépalo, largo del pétalo y ancho del pétalo.
+
+El término "target", salida u objetivo es típicamente la meta que queremos modelar. La clave `target_names` indica 3 especies de esta flor: "setosa", "versicolor" y "virginica".
+
+The term "target" is typically the goal we are trying to model. The key "target_names" indicates 3 species of this flower, "setosa", "versicolor", and "virginica".
+
+Nuestra meta es usar estos features y descripciones de las flores para poder predecir la especie de la planta.
+
+### Truco
+
+Si no conocemos las etiquetas, contrario al caso del reto, podemos emplear la Curva de Elbow:
+```python
+I = []
+centroids = []
+for c in range(2,11):
+  k2model = KMeans(n_clusters=c, random_state=42)
+  k2model.fit(data[["petal length (cm)", "petal width (cm)"]])
+  I.append(k2model.inertia_)
+  centroids.append(k2model.cluster_centers_)
+
+f = plt.figure(figsize=(7,5))
+ax = f.add_subplot(1,1,1)
+
+ax.scatter(x=np.arange(2,11), y=I)
+ax.plot(np.arange(2,11),I)
+
+ax.set_xlabel('Clusters')
+ax.set_ylabel('Inertia')
+ax.set_title('Elbow method for optimal k value')
+
+f.tight_layout()
+```
+![Elbow Graph](images/Elbow_sim.png)
+
+> **Nota**: código aportado por la comunidad de estudiantes de Platzi (Jonathan Vásquez Alvarado)
+
+> También se puede usar la biblioteca: https://www.scikit-yb.org/en/latest/index.html
+
+
+
 # Deep Learning
 
 # Conclusiones
