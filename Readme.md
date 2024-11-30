@@ -367,3 +367,15 @@ f.tight_layout()
     - Si es **muy grande**, el modelo podría atorarse en una mala solución.
 
 # Conclusiones
+
+**Qué aprendimos**
+- Bases de ciencia de datos y visualizaciones.
+- Algoritmos de aprendizaje supervisado.
+- Algoritmos de aprendizaje no supervisado.
+- Redes neuronales y deep learning.
+
+**Qué más aprender**
+- Uso práctico y avanzado de algoritmos de machine learning y redes neuronales.
+- Uso avanzado de **librerías ML** como scikit-learn y TensorFlow.
+- Despliegue de aplicaciones de ML.
+- Procesamiento de lenguaje natural y más.
