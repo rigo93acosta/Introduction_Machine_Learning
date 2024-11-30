@@ -1,6 +1,6 @@
 # Introducción al Machine Learning
 
-![Portada]()
+![Portada](images/Portada.png)
 
 # Tabla de Contenido
 - [Introducción al machine learning](#introducción-a-machine-learning)
