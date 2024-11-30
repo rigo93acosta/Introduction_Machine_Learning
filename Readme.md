@@ -107,6 +107,22 @@ Dataset:
 
 > [Solución al reto en notebook](src/reto_procesando_un_dataset.ipynb)
 
+> Tips del reto:
+> - Elimina cualquier valor faltante y remplazarlos hacia la variable de los datos `data = data.dropna()`.
+
+> Plotting Multiple Graphs
+> ```python
+>f = plt.figure(figsize=(20,10))
+>for index, val_bins in enumerate([20, 25, 30, 35, 40, 85]):
+>    ax = f.add_subplot(2,3,index+1)
+>    data["Age"].hist(ax=ax, edgecolor='black', linewidth=2, bins=val_bins, color=plt.cm.tab20(index))
+>    ax.set_title("Age range of patients")
+>    ax.set_ylim([0, 510])
+>    ax.set_xlabel("Age")
+>    ax.set_ylabel("Count")
+>f.tight_layout()
+>```
+
 # Algoritmos simples de machine learning
 
 # Deep Learning
